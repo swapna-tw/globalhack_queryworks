@@ -1,0 +1,10 @@
+# Databases
+*.db
+*.sqlite3
+
+# Python environment
+__pycache__/
+*.pyc
+.env
+venv/
+.streamlit/
