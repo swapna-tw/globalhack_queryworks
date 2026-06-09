@@ -1,11 +1,13 @@
+# app.py
 import streamlit as st
 import os
-from safe_sql_graph import SafeSQLGraphEngine, setup_sample_database
+
+from database_setup import setup_sample_database
+from sql_engine import SafeSQLGraphEngine
 
 # Set up page configurations
-st.set_page_config(page_title="DataSight: Conversational SQL Agent", page_icon="💼", layout="centered")
+st.set_page_config(page_title="QueryWorks: Conversational SQL Agent", page_icon="💼", layout="centered")
 
-# Ensure API Key is present
 if not os.environ.get("ANTHROPIC_API_KEY"):
     st.error("Please set the ANTHROPIC_API_KEY environment variable to run this application.")
     st.stop()
@@ -13,7 +15,9 @@ if not os.environ.get("ANTHROPIC_API_KEY"):
 # Initialize the database and engine once using Streamlit caching
 @st.cache_resource
 def get_engine():
-    db_file = setup_sample_database()
+    # Calling the setup function from database_setup.py
+    db_file = setup_sample_database("organization_vault.db")
+    # Initializing the engine from sql_engine.py
     return SafeSQLGraphEngine(db_file)
 
 try:
@@ -23,14 +27,14 @@ except Exception as e:
     st.stop()
 
 # App Header Layout
-st.title("💼 DataSight AI")
+st.title("💼 QueryWorks")
 st.caption("Application Modernization Semantic Layer — Query legacy databases securely using natural language.")
 st.divider()
 
 # Initialize chat history session state
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hello! I am your semantic data assistant. Ask me anything about our external entity transactions."}
+        {"role": "assistant", "content": "Hello! I am your semantic data assistant. Ask me anything about our legacy entities or transaction behaviors."}
     ]
 
 # Display historical messages from session state
