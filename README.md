@@ -37,7 +37,7 @@ cd globalhack_queryworks
 Isolate your workspace packages from your global system environment.
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate**
+python3 -m venv .venv && source .venv/bin/activate
 ```
 
 ### 3. Install Required Dependencies
@@ -45,7 +45,7 @@ python3 -m venv .venv && source .venv/bin/activate**
 Install the updated, modularized LangChain packages along with LangGraph and Streamlit:
 
 ```bash
-pip install -U langchain langchain-core langchain-anthropic langgraph streamlit**
+pip install -U langchain langchain-core langchain-anthropic langgraph streamlit
 ```
 
 ### 4. Authenticate the AI Engine (Set API Key)
@@ -53,7 +53,7 @@ pip install -U langchain langchain-core langchain-anthropic langgraph streamlit*
 Set your Anthropic credentials as an environment variable so the semantic layer can securely query Claude 4.6 Sonnet.
 
 ```bash
-export ANTHROPIC_API_KEY="your-actual-api-key-here"**
+export ANTHROPIC_API_KEY="your-actual-api-key-here"
 ```
 
 ## 🧪 Running the Execution Vectors
@@ -63,7 +63,7 @@ export ANTHROPIC_API_KEY="your-actual-api-key-here"**
 To test the core graph engine, self-healing matrix, and security exceptions right in your console, run the automated integration test script. This script automatically instantiates the relational database file, seeds it with mock operational data, and tests both normal business questions and adversarial prompt injections:
 
 ```bash
-python main.py**
+python main.py
 ```
 
 ### Vector B: Interactive Web Dashboard (app.py)
@@ -71,5 +71,5 @@ python main.py**
 To launch the complete, conversational graphical user interface for business stakeholders, run the Streamlit app. This opens an interactive application playground in your local web browser:
 
 ```bash
-streamlit run app.py**
+streamlit run app.py
 ```
